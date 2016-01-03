@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% block jumbotron %}
+
+    {% endblock %}
+    <div class="row">
+        <div class="col-md-8">
+            {% block stream %}
+
+            {% endblock %}
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">About Me</h3>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        I am Mohammad Ali Maleki. I am a developer.
+                        I am studing Master of Information Technology.
+                        I know how to code with Python, Javascript, PHP and C#
+                        and my favourite is Python.
+                        I am professional in Django and Laravel.
+                    </p>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">My Portfolio</h3>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        <li><a target="_blank" href="http://cilixcorp.ir/">My Personal Website</a></li>
+                        <li><a target="_blank" href="http://cilixcorp.ir/">Mohammad Javed Maleki</a></li>
+                        <li><a target="_blank" href="http://cilixcorp.ir/">CiliX Corp</a></li>
+                        <li><a target="_blank" href="http://cilixcorp.ir/">JohnnyBook</a></li>
+                        <li><a target="_blank" href="http://cilixcorp.ir/">A Blog (Built with Laravel)</a></li>
+                        <li><a target="_blank" href="http://cilixcorp.ir/">A Shop (Built with Django)</a></li>
+                        <li><a target="_blank" href="http://cilixcorp.ir/">My AngularJS Samples</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            {% include 'articles/side_panel.html' with panel_title='Articles Categorized By Date' article_cats=request.session.articles_by_year url_name='articles:articles_by_year' %}
+            {% include 'articles/side_panel.html' with panel_title='Articles Categorized By Tag' article_cats=request.session.tags url_name='articles:articles_by_tag' %}
+{#            {% include 'articles/side_panel.html' with panel_title='Articles Categorized By Tag' article_cats=request.session.something %}#}
+        </div>
+    </div>
+{% endblock %}

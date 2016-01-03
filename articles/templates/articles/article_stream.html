@@ -1,0 +1,47 @@
+{% extends 'base_stream.html' %}
+
+{% block jumbotron %}
+    <div class="jumbotron">
+        <h1>Sample Blog Built with Django</h1>
+
+        <p>
+            Hello. I am Mohammad Ali Maleki.
+            I developed this website with Django, Python, HTML, CSS and Bootstrap.
+            I built this blog to prove my programming skills.
+            so the content of this blog does not represent my
+            opinion
+        </p>
+
+        <p>
+            <a class="btn btn-info btn-lg" href="#" role="button">My Website</a>
+            <a class="btn btn-primary btn-lg" href="#" role="button">My LinkedIn</a>
+            <a class="btn btn-warning btn-lg" href="#" role="button">My GitHub</a>
+        </p>
+    </div>
+{% endblock %}
+
+{% block stream %}
+    {% for article in articles %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><a href="{% url 'articles:detail' article.slug %}">{{ article.title }}</a></h3>
+            </div>
+            <div class="panel-body">
+                {{ article.content|truncatechars:500 }} |
+                <a class="btn btn-primary btn-xs" href="{% url 'articles:detail' article.slug %}">more</a>
+            </div>
+            <div class="panel-footer">
+                <small>{{ article.published_date|timesince }} ago</small>
+                |
+                {% if article.tags %}
+                    {% for tag in article.tags.all %}
+                        <span class="label label-default">{{ tag }}</span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    {% empty %}
+        <h2>oops</h2>
+    {% endfor %}
+
+{% endblock %}

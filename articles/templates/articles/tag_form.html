@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+    <h1 class="page-header">Tags</h1>
+
+    <div class="row tag-form-section">
+        <div class="col-xs-offset-1 col-xs-10">
+            <form method="post" class="form-inline">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="form-group">
+                        {{ field.errors }}
+                        <label for="{{ field.id_for_label }}" class="control-label">{{ field.label }}</label>
+                        {{ field|add_class:"form-control" }}
+                    </div>
+                {% endfor %}
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="tag-stream-section">
+        {% for tag in tags %}
+            <div class="btn-group" role="group" aria-label="...">
+                <span type="button" class="btn btn-default">{{ tag }}</span>
+                <a class="btn btn-default" href="{% url 'articles:tag_delete' tag.id %}">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>&nbsp;
+        {% endfor %}
+
+    </div>
+{% endblock %}

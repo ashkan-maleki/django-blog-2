@@ -1,0 +1,28 @@
+body { padding-top: 70px; }
+
+.tag-form-section {
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgb(226, 226, 226);
+}
+
+.tag-stream-section {
+    margin-top: 20px;
+}
+
+span.btn-default {
+    cursor: default;
+}
+
+span.btn-default:hover, span.btn-default:active,
+span.btn-default.active, span.btn-default.focus,
+span.btn-default:focus {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+    webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.label-large {
+    font-size: 1.4em;
+}

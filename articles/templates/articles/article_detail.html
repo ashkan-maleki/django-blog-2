@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block content %}
+    <h1 class="page-header">{{ article.title }}</h1>
+    <div class="article-body">
+        <p>
+            <span class="text-muted">{{ article.published_date|timesince }} ago</span> |
+            {% if article.tags %}
+                {% for tag in article.tags.all %}
+                    <span class="label label-default">{{ tag }}</span>
+                {% endfor %}
+            {% endif %}
+        </p>
+        {{ article.content }}
+    </div>
+{% endblock %}

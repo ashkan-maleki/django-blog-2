@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% include 'articles/form_snippet.html' %}
+{% endblock %}
+
+{% block script %}
+    <script>
+        $('#id_tags').select2({
+            placeholder: 'type to choose a tag'
+        });
+    </script>
+{% endblock %}

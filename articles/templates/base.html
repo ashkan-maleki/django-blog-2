@@ -1,0 +1,71 @@
+{% load staticfiles %}
+{% load i18n %}
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %} - CiliX Sports</title>
+{#    <link rel="stylesheet"#}
+{#          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"#}
+{#          integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="#}
+{#          crossorigin="anonymous">#}
+    <link rel="stylesheet" href="{% static 'articles/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'articles/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'articles/css/select2.min.css' %}">
+{#    <script src="//cdn.ckeditor.com/4.5.5/full/ckeditor.js"></script>#}
+    <script src="{% static 'articles/ckeditor/ckeditor.js' %}"></script>
+</head>
+<body>
+<header>
+    <nav id="navbar-main" class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url 'articles:index' %}">Sample Blog</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="{% url 'articles:list' %}">Articles List</a></li>
+                    <li><a href="{% url 'articles:create' %}">Create an Article</a></li>
+                    <li><a href="{% url 'articles:tags' %}">Tags</a></li>
+                </ul>
+                {#                    @Html.Partial("_LoginPartial")#}
+            </div>
+        </div>
+    </nav>
+    </header>
+<div class="container">
+    {% block content %}
+
+    {% endblock %}
+    <hr/>
+    <footer>
+        <p>
+            {% now "Y" as current_year %}
+            {% blocktrans %}&copy; {{ current_year }} - Mohammad Ali Maleki{% endblocktrans %}
+        </p>
+    </footer>
+</div>
+
+{#<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>#}
+{#<!-- Include all compiled plugins (below), or include individual files as needed -->#}
+{#<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"#}
+{#        integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ=="#}
+{#        crossorigin="anonymous"></script>#}
+{#<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>#}
+{#<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.js"></script>#}
+
+<script src="{% static 'articles/js/jquery-1.11.3.min.js' %}"></script>
+<script src="{% static 'articles/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'articles/js/select2.full.min.js' %}"></script>
+
+{% block script %}
+
+{% endblock %}
+</body>
+</html>
